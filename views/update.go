@@ -34,8 +34,14 @@ func (m model) HandlePlatformNavigation(key string) (tea.Model, tea.Cmd) {
 
 	if key == "up" || key == "shift+tab" {
 		m.platform--
+		if m.platform < 0 {
+			m.platform = 0
+		}
 	} else {
 		m.platform++
+		if m.platform > 1 {
+			m.platform = 1
+		}
 	}
 
 	return m, nil
@@ -53,7 +59,7 @@ func (m model) HandleInputNavigation(key string) (tea.Model, tea.Cmd) {
 		case 2:
 			// Flex
 			cookies.Flex(m.inputs[0].Value(), m.inputs[1].Value())
-		case 3:
+			// case 3:
 			// Panda
 		}
 

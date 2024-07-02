@@ -11,13 +11,13 @@ func Platforms(m model) string {
 
 	tpl := "Select Platform:\n\n"
 	tpl += "%s\n\n"
-	tpl += subtle("j/k, up/down: select") + dot + subtle("enter: choose") + dot + subtle("q, esc: quit")
+	tpl += subtle("tab/shift+tab, up/down: select") + dot + subtle("enter: choose") + dot + subtle("q, esc: quit")
 
 	Platforms := fmt.Sprintf(
-		"%s\n%s\n%s\n",
+		"%s\n%s\n",
 		tools.Checkbox("Afreeca", c == 0),
 		tools.Checkbox("Flex", c == 1),
-		tools.Checkbox("Panda", c == 2),
+		// tools.Checkbox("Panda", c == 2),
 	)
 
 	return fmt.Sprintf(tpl, Platforms)
