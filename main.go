@@ -28,6 +28,8 @@ func main() {
 		cookies.Afreeca(*username, *password)
 	case "flex":
 		cookies.Flex(*username, *password)
+	case "panda":
+		cookies.Panda()
 	default:
 		fmt.Println("Mode not supported.")
 		os.Exit(1)

@@ -16,6 +16,10 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "tab", "shift+tab", "enter", "up", "down":
 			if m.platformSelected && !m.submitted {
 				return m.HandleInputNavigation(msg.String())
+			} else if m.platform == 2 {
+				// this is the best way in my head to do this,,, whatever
+				cookies.Panda()
+				return m, tea.Quit
 			} else {
 				return m.HandlePlatformNavigation(msg.String())
 			}
@@ -39,8 +43,8 @@ func (m model) HandlePlatformNavigation(key string) (tea.Model, tea.Cmd) {
 		}
 	} else {
 		m.platform++
-		if m.platform > 1 {
-			m.platform = 1
+		if m.platform > 2 {
+			m.platform = 2
 		}
 	}
 
@@ -59,8 +63,6 @@ func (m model) HandleInputNavigation(key string) (tea.Model, tea.Cmd) {
 		case 2:
 			// Flex
 			cookies.Flex(m.inputs[0].Value(), m.inputs[1].Value())
-			// case 3:
-			// Panda
 		}
 
 		return m, nil
